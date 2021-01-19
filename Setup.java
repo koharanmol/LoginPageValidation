@@ -9,6 +9,4 @@ public class Setup {
       driver.manage().window().maximize();
       driver.get("https://app.later.com/user/login");
   }
-
-
 }
