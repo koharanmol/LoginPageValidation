@@ -16,20 +16,8 @@ public class BaseElements extends Setup {
     private WebElement forget_password_link = driver.findElement(By.id("ember11"));
     private WebElement Later_logo_link = driver.findElement(By.className("img--logo"));
     private WebElement Account_create_validation = driver.findElement(By.className("tSU--card__title"));
-
-    public void setSign_in_heading(WebElement sign_in_heading) {
-        Sign_in_heading = sign_in_heading;
-    }
-
     private WebElement Sign_in_heading;
     private WebElement Sign_out_button;
-
-    public void setSign_out_button(WebElement sign_out_button) {
-        Sign_out_button = sign_out_button;
-    }
-
-
-
     private WebElement alert_link;
 
     public void setDriver(WebDriver driver) {
@@ -82,5 +70,13 @@ public class BaseElements extends Setup {
 
     public WebElement getSign_out_button() {
         return Sign_out_button;
+    }
+    
+    public void setSign_in_heading(WebElement sign_in_heading) {
+        Sign_in_heading = sign_in_heading;
+    }
+    
+    public void setSign_out_button(WebElement sign_out_button) {
+        Sign_out_button = sign_out_button;
     }
 }
