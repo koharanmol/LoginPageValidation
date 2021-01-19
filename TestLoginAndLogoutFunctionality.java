@@ -20,6 +20,8 @@ public class TestLoginAndLogoutFunctionality extends BaseElements {
     1. Login to the website("https://app.later.com/user/login")
     2. Input Valid Email and Password
     3. Validate Account created link
+    4. Sign Out from the website
+    5. Close the browser.
      */
     @Test
     public void validate_valid_email_and_password() throws InterruptedException {
