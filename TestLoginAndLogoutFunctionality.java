@@ -49,7 +49,7 @@ public class TestLoginAndLogoutFunctionality extends BaseElements {
  */
     @Test
     public void validate_valid_email_and_invalid_password() throws InterruptedException {
-        getEmail_input_field().sendKeys(Invalid_email_address);
+        getEmail_input_field().sendKeys(valid_email_address);
         getPassword_input_field().sendKeys(Invalid_email_address);
         getSign_in_button().click();
         setAlert_link(wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(alert_box_classpath))));
