@@ -2,7 +2,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.Reporter;
 import org.testng.annotations.Test;
+import java.util.logging.Logger;
 
 
 public class TestLoginAndLogoutFunctionality extends BaseElements {
@@ -14,6 +16,8 @@ public class TestLoginAndLogoutFunctionality extends BaseElements {
     private String heading_classpath = "tSU--card__title";
     private String alert_box_classpath = "o--alert__text";
     WebDriverWait wait = new WebDriverWait(getDriver(),3,100);
+    Logger logger = Logger.getLogger(TestLoginAndLogoutFunctionality.class.getName());
+
     public TestLoginAndLogoutFunctionality() {
         super();
     }
@@ -27,20 +31,26 @@ public class TestLoginAndLogoutFunctionality extends BaseElements {
      */
     @Test
     public void validate_valid_email_and_password() throws InterruptedException {
+        logger.info("Browser is successfully launched.");
         Thread.sleep(5000);
         getEmail_input_field().sendKeys(valid_email_address);
+        logger.info("Email entered:- " + valid_email_address);
         getPassword_input_field().sendKeys(valid_password);
+        logger.info("Password entered:- " + valid_password);
         getSign_in_button().click();
+        logger.info("Successfully Logged into the account.");
         Assert.assertTrue(getAccount_create_validation().isDisplayed());
-        System.out.println("Account is verified and loged in");
+        logger.info("Account is verified and Logged in.");
         Thread.sleep(10000);
         setSign_out_button(getDriver().findElement(By.xpath(sign_out_xpath)));
         getSign_out_button().click();
+        logger.info("Account is Logged out.");
         Thread.sleep(5000);
         setSign_in_heading(getDriver().findElement(By.className(heading_classpath)));
         Assert.assertTrue(getSign_in_heading().isDisplayed());
-        System.out.println("Successfully Logged out");
+        logger.info("Account is successfully Logged out.");
         getDriver().close();
+        logger.info("Browser is successfully closed.");
     }
     /*
     1. Login to the website("https://app.later.com/user/login")
@@ -49,12 +59,18 @@ public class TestLoginAndLogoutFunctionality extends BaseElements {
  */
     @Test
     public void validate_valid_email_and_invalid_password() throws InterruptedException {
+        logger.info("Browser is successfully launched.");
         getEmail_input_field().sendKeys(valid_email_address);
+        logger.info("Email entered:- " + valid_email_address);
         getPassword_input_field().sendKeys(Invalid_email_address);
+        logger.info("Password entered:- " + Invalid_password);
         getSign_in_button().click();
+        logger.info("Clicked on Sign In button.");
         setAlert_link(wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(alert_box_classpath))));
         Assert.assertTrue(getAlert_link().getText().contains("Invalid Email or password"));
-        System.out.println("Invalid Email or password");
+        logger.info("Logged an error:- Invalid Email or password.");
+        getDriver().close();
+        logger.info("Browser is successfully closed.");
     }
     /*
     1. Login to the website("https://app.later.com/user/login")
@@ -63,12 +79,18 @@ public class TestLoginAndLogoutFunctionality extends BaseElements {
 */
     @Test
     public void validate_invalid_email_and_valid_password(){
+        logger.info("Browser is successfully launched.");
         getEmail_input_field().sendKeys(Invalid_email_address);
+        logger.info("Email entered:- " + Invalid_email_address);
         getPassword_input_field().sendKeys(valid_password);
+        logger.info("Password entered:- " + valid_password);
         getSign_in_button().click();
+        logger.info("Clicked on Sign In button.");
         setAlert_link(wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(alert_box_classpath))));
         Assert.assertTrue(getAlert_link().getText().contains("Invalid Email or password"));
-        System.out.println("Invalid Email or password");
+        logger.info("Logged an error:- Invalid Email or password.");
+        getDriver().close();
+        logger.info("Browser is successfully closed.");
     }
     /*
     1. Login to the website("https://app.later.com/user/login")
@@ -77,12 +99,18 @@ public class TestLoginAndLogoutFunctionality extends BaseElements {
 */
     @Test
     public void validate_invalid_email_and_invalid_password(){
+        logger.info("Browser is successfully launched.");
         getEmail_input_field().sendKeys(Invalid_email_address);
+        logger.info("Email entered:- " + Invalid_email_address);
         getPassword_input_field().sendKeys(Invalid_password);
+        logger.info("Password entered:- " + Invalid_password);
         getSign_in_button().click();
+        logger.info("Clicked on Sign In button.");
         setAlert_link(wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(alert_box_classpath))));
         Assert.assertTrue(getAlert_link().getText().contains("Invalid Email or password"));
-        System.out.println("Invalid Email or password");
+        logger.info("Logged an error:- Invalid Email or password.");
+        getDriver().close();
+        logger.info("Browser is successfully closed.");
     }
     /*
     1. Login to the website("https://app.later.com/user/login")
@@ -91,11 +119,17 @@ public class TestLoginAndLogoutFunctionality extends BaseElements {
 */
     @Test
     public void validate_empty_email_and_empty_password(){
+        logger.info("Browser is successfully launched.");
         getEmail_input_field().sendKeys("");
+        logger.info("Email entered:- " + Invalid_email_address);
         getPassword_input_field().sendKeys("");
+        logger.info("Password entered:- " + Invalid_password);
         getSign_in_button().click();
+        logger.info("Clicked on Sign In button.");
         setAlert_link(wait.until(ExpectedConditions.visibilityOfElementLocated(By.className(alert_box_classpath))));
         Assert.assertTrue(getAlert_link().getText().contains("You need to sign in or sign up before continuing."));
-        System.out.println("You need to sign in or sign up before continuing.");
+        logger.info("You need to sign in or sign up before continuing.");
+        getDriver().close();
+        logger.info("Browser is successfully closed.");
     }
 }
